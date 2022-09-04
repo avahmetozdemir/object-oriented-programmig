@@ -15,19 +15,19 @@
 
 **Immutable:** means that you cannot change the value
 
-    def main():
-			student = get_student()
-			if student[0] == "Padma"
-				student[1] = "Ravenclaw"
-			print(f"{student[0]} from {student[1]}) 
+        def main():
+                student = get_student()
+                if student[0] == "Padma"
+                    student[1] = "Ravenclaw"
+                print(f"{student[0]} from {student[1]}) 
 
-		def get_student(): 
-			name : input('Name: ')
-			house : input('House: ')
-			return (name, house) 
+            def get_student(): 
+                name : input('Name: ')
+                house : input('House: ')
+                return (name, house) 
 
-	name : "Padma"
-	house : "Gryffindor"
+        name : "Padma"
+        house : "Gryffindor"
 
 - We just see a big mess of error which is a "TypeError": 'tuple' object does not support item assignment. --> Here is a manifestation of the immutability of tuples. You cannot change location 0 or 1 or anything inside, That is a feature. That is the design of the tuple
 
@@ -39,34 +39,34 @@
 
 - Dictionaries are **mutable.**
 
-    def main():
-		student = get_student()
-		if student['name'] == "Padma"
-			student['house'] = "Ravenclaw"
-		print(f"{student['name']} from {student['house']}) 
+        def main():
+            student = get_student()
+            if student['name'] == "Padma"
+                student['house'] = "Ravenclaw"
+            print(f"{student['name']} from {student['house']}) 
 
-	def get_student():
-		student = {} 
-		student["name"] = input("Name: ")
-		student["house"] = input ('House: ')
-		return student
+        def get_student():
+            student = {} 
+            student["name"] = input("Name: ")
+            student["house"] = input ('House: ')
+            return student
 
 #### Classes
 
 - A class is like a blueprint for pieces of data objects, is like a mold that you can define and give a name and when you use that mold or use that blueprint you get types of data that are designed exactly as you want. So in short, classes allow us to invent our own data types in Python and give them a name. This is a primary feature of OOP to be able to create our own objects in this way and, in the case of Python in classes, even give them some custom names.
 
-    class Student //we define class which is our own data 'type'
-			...
+        class Student //we define class which is our own data 'type'
+                ...
 
-	def main():
-		student = get_student() 
-		print(f"{student.name} from {student.house}) 
+        def main():
+            student = get_student() 
+            print(f"{student.name} from {student.house}) 
 
-	def get_student():
-		student= Student() //Creating object of that class
-		student.name = input("Name: ")
-		student.house = input("House: ")
-		return student
+        def get_student():
+            student= Student() //Creating object of that class
+            student.name = input("Name: ")
+            student.house = input("House: ")
+            return student
 
 !!! Now what's really powerufl about class and OOP  more generally, is that we have created this custom data type called 'Student'. We have stored one such 'student' in a variable like we can always do in a variable called 'student'- We can call it anything we want- and then we are returning that variable "student.name = input("Name: ") student.house = input("House: ")" that has the result of putting inside of that class, a name 'attribute ' and a house 'attribute'. 
 
@@ -80,20 +80,20 @@
 
 - In the context of classes, there are a number of not just attributes or instance variables that you can put inside, but also 'methods'. Classes come with certain methods, or functions inside of them that you can define, and they just behave in  a special way. These funtions allow you to determine behaviour in a standart way
 
-    class Student:
-        def __init__(self,name, house) //This is designed by the authors of Python and if we want to initialize the contents of an object from a class, we define this method, and we'll see what it's about to do here.
-            self.name = name// storing them in really, identically
-            self.house.house// named 'instace variables' in the object
+        class Student:
+            def __init__(self,name, house) //This is designed by the authors of Python and if we want to initialize the contents of an object from a class, we define this method, and we'll see what it's about to do here.
+                self.name = name// storing them in really, identically
+                self.house.house// named 'instace variables' in the object
 
-    def main():
-        student = get_student()		 
-        print(f"{student.name} from {student.house}") 
+        def main():
+            student = get_student()		 
+            print(f"{student.name} from {student.house}") 
 
-    def get_student():	
-        name = input("Name: ")
-        house = input("House: ")
-        student  = Student(name,house) //This line is constructor.  
-        return student
+        def get_student():	
+            name = input("Name: ")
+            house = input("House: ")
+            student  = Student(name,house) //This line is constructor.  
+            return student
 
 
 - **What is differance between init method and default constructor?->** In other languages, for instance Java, there are functions that are explicitly called constructors that contruct an object,they initialize it with values.Python technically calls this init method the initializition method, it initalizes the value.
@@ -153,46 +153,46 @@
 
 **Another Feature :** properties -> Property is just an attribute that has even more defense mechanisms put into place, a little more functionality implemented by you to prevent programmers, from messing things up like these attributes. So again; a property is going to be an attribute that we have more control over. -> @property , which is technically a function.
 
-	class Student:
-		def __init__(self,name, house) 
-			
-			self.name = name
-			self.house= house 
+        class Student:
+            def __init__(self,name, house) 
+                
+                self.name = name
+                self.house= house 
 
-		def __str__(self)
-			return f"{self.name} from {self.house}"
+            def __str__(self)
+                return f"{self.name} from {self.house}"
 
-		# Getter // getter is a function for a class that gets some attributes 
-		@property
-		def house(self):
-			return self._house//we should have house name for variable or function name because they gonna collide
+            # Getter // getter is a function for a class that gets some attributes 
+            @property
+            def house(self):
+                return self._house//we should have house name for variable or function name because they gonna collide
 
-		# Setter // setter is a function in some class that sets some value
-		@house.setter
-		def house(self,house):
-			if house not in ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"]:
-				raise ValueError("Invalid house")
-			self._house = house
+            # Setter // setter is a function in some class that sets some value
+            @house.setter
+            def house(self,house):
+                if house not in ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"]:
+                    raise ValueError("Invalid house")
+                self._house = house
 
-		@property
-		def name(self):
-			return self._name	
+            @property
+            def name(self):
+                return self._name	
 
-		@name.setter
-		def name(self,name):
-			if not name:
-				raise ValueError("Missing name")
-			self_name =name
+            @name.setter
+            def name(self,name):
+                if not name:
+                    raise ValueError("Missing name")
+                self_name =name
 
 
-	def main():
-		student = get_student()
-		print(f"{student.name} from {student.house}) 
+        def main():
+            student = get_student()
+            print(f"{student.name} from {student.house}) 
 
-	def get_student():	
-		name = input("Name: ")
-		house = input("House: ")
-		return Student(name,house)
+        def get_student():	
+            name = input("Name: ")
+            house = input("House: ")
+            return Student(name,house)
 
 
 ### hat.py
